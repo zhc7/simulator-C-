@@ -3,12 +3,14 @@
 //
 
 #include "Circle.h"
+#include <iostream>
 
 Circle::Circle(double radius, double k) : radius(radius), k(k) {}
 
 Vector Circle::collapse(Vector place, Entity entity, double r) {
-    if (typeid(entity) == typeid(Circle)) {
-        auto *c = (Circle *) entity.shape;
+    auto* c = dynamic_cast<Circle*>(entity.shape);
+    if (c) {
+        // std::cout << "Circle::collapse" << std::endl;
         if (r > radius + c->radius) {
             return {double(0)};
         }

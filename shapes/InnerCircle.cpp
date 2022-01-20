@@ -4,12 +4,14 @@
 
 #include "InnerCircle.h"
 #include "Circle.h"
+#include <iostream>
 
 InnerCircle::InnerCircle(double radius, double k) : radius(radius), k(k) {}
 
 Vector InnerCircle::collapse(Vector place, Entity entity, double r) {
-    if (typeid(entity) == typeid(Circle)) {
-        auto* c = (Circle*) entity.shape;
+    auto* c = dynamic_cast<Circle*>(entity.shape);
+    if (c) {
+        // std::cout << "InnerCircle::collapse" << std::endl;
         if (r < radius - c->radius) {
             return {double(0)};
         }
@@ -17,5 +19,6 @@ Vector InnerCircle::collapse(Vector place, Entity entity, double r) {
         Vector f = (radius - c->radius - r) * (k + c->k);
         return d * (f / r);
     }
+    std::cout << "InnerCircle::collapse not if " << typeid(&entity.shape).name() << typeid(Circle).name() << std::endl;
     return {double(0)};
 }

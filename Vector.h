@@ -25,6 +25,8 @@ public:
 
     Vector(Vector const &v);
 
+    Vector operator+(double n);
+
     Vector operator+(Vector &v);
 
     Vector operator-(Vector &v);
