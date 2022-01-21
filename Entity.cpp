@@ -36,8 +36,8 @@ Vector Entity::collapse(Entity e, map<string, Vector> constants) {
     Vector electrical = Vector(double(0));
     if (bool(q)) {
         double electrical_n =
-                q * e.q / (double(constants.find("epsilon0")->second) *
-                           4 * double(constants.find("pi")->second) * r * r);
+                q * e.q / ( constants.at("epsilon0").value *
+                           4 * constants.at("pi").value * r);
         electrical = r_v * (electrical_n / r);
     }
     return mechanical + electrical;
