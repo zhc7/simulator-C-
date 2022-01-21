@@ -13,6 +13,7 @@ Vector::Vector(const vector<double> &vals) {
 Vector::Vector(const Vector &v) {
     dim = v.dim;
     values = v.values;
+    value = v.value;
 }
 
 Vector::Vector(double val) {
@@ -36,6 +37,8 @@ Vector Vector::operator+(double n) {
 Vector Vector::operator+(Vector &v) {
     if (v.dim == 0) {
         return *this + double(v);
+    } else if (dim == 0) {
+        return v + value;
     }
     vector<double> new_v;
     new_v.reserve(dim);

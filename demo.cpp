@@ -11,15 +11,8 @@
 using namespace std;
 
 
-map<string, Vector> constants = {
-        {"g",       Vector({0, 9.8})},
-        {"epsion0", Vector(8.854e-12)},
-        {"pi",      Vector(3.14159)},
-};
-
-
 int main() {
-    InnerCircle s0 = InnerCircle(20);
+    InnerCircle s0 = InnerCircle(10);
     Shape *ps0 = &s0;
     Entity Box = Entity(ps0, 1.0, 0.0, Vector({0, 0}), Vector(0.0), Vector(0.0), true);
     Circle s1 = Circle(1);
@@ -31,6 +24,12 @@ int main() {
     Entity c1 = Entity(ps1, 2, 1e-4, Vector({0, 0}), Vector({3, 4}), 0);
     Entity c2 = Entity(ps2, 2, -1e-4, Vector({3, 5}), Vector({5, -4}), 0);
     Entity c3 = Entity(ps3, 2, -1e-4, Vector({-3, -4}), Vector({6, 0}), 0);
+    
+    map<string, Vector> constants = {
+            {"g",       Vector({0, 9.8})},
+            {"epsion0", Vector((double)8.854e-12)},
+            {"pi",      Vector((double)3.14159)},
+    };
 
     World world = World({Box, c1, c2, c3}, constants, "display", 1e-4);
 

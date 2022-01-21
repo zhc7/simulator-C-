@@ -21,10 +21,7 @@ void Entity::calc_a() {
     if (fixed) {
         return;
     }
-    if (forces.empty()) {
-        return;
-    }
-    Vector F = Vector(forces.at(0).dim);
+    Vector F = Vector(double(0));
     for (auto &f: forces) {
         F = F + f;
     }
