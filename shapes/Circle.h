@@ -15,7 +15,7 @@ public:
 
     explicit Circle(double radius, double k = 100);
 
-    Vector collapse(Vector place, Entity entity, double r) override;
+    nc::NdArray<double> collapse(nc::NdArray<double> place, Entity entity, double r) override;
 };
 
 

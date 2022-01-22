@@ -17,7 +17,7 @@ public:
 
     explicit InnerCircle(double radius, double k=10000);
 
-    Vector collapse(Vector place, Entity entity, double r) override;
+    nc::NdArray<double> collapse(nc::NdArray<double> place, Entity entity, double r) override;
 };
 
 

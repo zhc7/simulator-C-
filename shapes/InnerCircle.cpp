@@ -8,17 +8,17 @@
 
 InnerCircle::InnerCircle(double radius, double k) : radius(radius), k(k) {}
 
-Vector InnerCircle::collapse(Vector place, Entity entity, double r) {
+nc::NdArray<double> InnerCircle::collapse(nc::NdArray<double> place, Entity entity, double r) {
     auto* c = dynamic_cast<Circle*>(entity.shape);
     if (c) {
         // std::cout << "InnerCircle::collapse" << std::endl;
         if (r < radius - c->radius) {
-            return {double(0)};
+            return nc::zeros<double>(1, dimension);
         }
-        Vector d = entity.place - place;
-        Vector f = (radius - c->radius - r) * (k + c->k);
+        nc::NdArray<double> d = entity.place - place;
+        double f = (radius - c->radius - r) * (k + c->k);
         return d * (f / r);
     }
     std::cout << "InnerCircle::collapse not if " << typeid(&entity.shape).name() << typeid(Circle).name() << std::endl;
-    return {double(0)};
+    return nc::zeros<double>(1, dimension);
 }

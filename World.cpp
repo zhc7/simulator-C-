@@ -5,11 +5,9 @@
 #include "World.h"
 
 
-World::World(vector<Entity> entities, map<string, Vector> constants,
-             string mode, double tic, double total_time) : entities(std::move(entities)), constants(constants),
-                                                           mode(std::move(mode)), tic(tic), total_time(total_time),
-                                                           g(constants.at("g")) {
-}
+World::World(vector<Entity> entities, string mode, double tic, double total_time) : entities(std::move(entities)),
+                                                                                    mode(std::move(mode)), tic(tic),
+                                                                                    total_time(total_time) {}
 
 void World::step() {
     for (auto &e: this->entities) {
@@ -21,9 +19,9 @@ void World::step() {
         Entity &e1 = entities.at(i);
         for (int j = i + 1; j < this->entities.size(); j++) {
             Entity &e2 = entities.at(j);
-            Vector F = e1.collapse(e2, constants);
+            nc::NdArray<double> F = e1.collapse(e2);
             e2.enforce(F);
-            e1.enforce(F * double(-1));
+            e1.enforce(-F);
         }
         e1.enforce(g);
     }

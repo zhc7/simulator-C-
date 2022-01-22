@@ -7,6 +7,8 @@
 
 #include "Shape.h"
 #include "Vector.h"
+#include "NumCpp.hpp"
+#include "constants.h"
 #include <vector>
 #include <map>
 
@@ -19,18 +21,18 @@ public:
     Shape *shape;
     double m;
     double q;
-    Vector place;
-    Vector v;
-    Vector a;
+    nc::NdArray<double> place;
+    nc::NdArray<double> v;
+    nc::NdArray<double> a;
     bool fixed;
-    vector<Vector> forces;
+    vector<nc::NdArray<double>> forces;
 
-    Entity(Shape *shape, double mass, double charge, const Vector& place, const Vector& velocity,
-           const Vector& acceleration, bool fixed = false);
+    Entity(Shape *shape, double mass, double charge, nc::NdArray<double>  place, nc::NdArray<double> velocity,
+           nc::NdArray<double> acceleration, bool fixed = false);
 
-    void enforce(const Vector &force);
+    void enforce(const nc::NdArray<double> &force);
 
-    Vector collapse(Entity entity, std::map<string, Vector> constants);
+    nc::NdArray<double> collapse(const Entity& entity);
 
     void calc_a();
 };

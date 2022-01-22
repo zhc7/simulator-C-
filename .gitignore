@@ -12,3 +12,7 @@ cmake-build-debug/
 out/build/x64-Debug/
 
 cmake-build-debug-visual-studio/
+
+cmake-build-debug-wsl/
+
+cmake-build-release-wsl/
