@@ -7,6 +7,7 @@
 #include "shapes/InnerCircle.h"
 #include "World.h"
 #include <ctime>
+#include "NumCpp.hpp"
 
 using namespace std;
 

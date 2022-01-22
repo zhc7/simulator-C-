@@ -4,29 +4,23 @@
 
 #include "World.h"
 
-#include <utility>
-
 
 World::World(vector<Entity> entities, map<string, Vector> constants,
-             const string &mode, double tic, double total_time) : g(constants.find("g")->second) {
-    this->entities = std::move(entities);
-    this->constants = constants;
-    this->mode = mode;
-    this->tic = tic;
-    this->total_time = total_time;
+             string mode, double tic, double total_time) : entities(std::move(entities)), constants(constants),
+                                                           mode(std::move(mode)), tic(tic), total_time(total_time),
+                                                           g(constants.at("g")) {
 }
 
 void World::step() {
-    for (int i = 0; i < this->entities.size(); i++) {
-        Entity& e = this->entities.at(i);
+    for (auto &e: this->entities) {
         e.v = e.a * tic + e.v;
         e.place = e.v * tic + e.place;
     }
 
     for (int i = 0; i < this->entities.size(); i++) {
-        Entity& e1 = entities.at(i);
+        Entity &e1 = entities.at(i);
         for (int j = i + 1; j < this->entities.size(); j++) {
-            Entity& e2 = entities.at(j);
+            Entity &e2 = entities.at(j);
             Vector F = e1.collapse(e2, constants);
             e2.enforce(F);
             e1.enforce(F * double(-1));
@@ -34,8 +28,7 @@ void World::step() {
         e1.enforce(g);
     }
 
-    for (int i = 0; i < this->entities.size(); i++) {
-        Entity& e = this->entities.at(i);
+    for (auto &e: this->entities) {
         e.calc_a();
     }
 }

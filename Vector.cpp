@@ -3,7 +3,6 @@
 //
 
 #include "Vector.h"
-#include <iostream>
 
 Vector::Vector(const vector<double> &vals) {
     values = vals;
@@ -28,7 +27,8 @@ Vector::Vector(int dim) {
 
 Vector Vector::operator+(double n) {
     vector<double> new_v;
-    for (int i = 0; i < dim; i++) {
+    new_v.reserve(dim);
+for (int i = 0; i < dim; i++) {
         new_v.push_back(values.at(i) + n);
     }
     return {new_v};

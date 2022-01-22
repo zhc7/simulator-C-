@@ -10,3 +10,5 @@ cmake-build-debug/
 .vs/
 
 out/build/x64-Debug/
+
+cmake-build-debug-visual-studio/

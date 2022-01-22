@@ -23,7 +23,7 @@ public:
     Vector g;
 
     World(vector<Entity> entities, map<string, Vector> constants,
-          const string &mode = "display", double tic = 0.01, double total_time = 10);
+          string mode = "display", double tic = 0.01, double total_time = 10);
 
     void step();
 
