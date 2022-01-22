@@ -8,6 +8,13 @@
 #include "World.h"
 #include <ctime>
 #include "NumCpp.hpp"
+#include "backward.hpp"
+
+namespace backward {
+
+backward::SignalHandling sh;
+
+}
 
 using namespace std;
 
