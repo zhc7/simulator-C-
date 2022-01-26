@@ -16,6 +16,8 @@ public:
     explicit Circle(double radius, double k = 100);
 
     nc::NdArray<double> collapse(nc::NdArray<double> place, Entity entity, double r) override;
+
+    void draw(SkCanvas *canvas, nc::NdArray<double> place) override;
 };
 
 

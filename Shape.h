@@ -10,6 +10,7 @@
 #include "Entity.h"
 #include "NumCpp.hpp"
 #include "constants.h"
+#include "include/core/SkCanvas.h"
 
 class Entity;
 
@@ -17,6 +18,8 @@ class Shape {
 
 public:
     virtual nc::NdArray<double> collapse(nc::NdArray<double> place, Entity entity, double r) = 0;
+
+    virtual void draw(SkCanvas* canvas, nc::NdArray<double> place) = 0;
 };
 
 

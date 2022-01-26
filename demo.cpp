@@ -6,6 +6,7 @@
 #include "shapes/Circle.h"
 #include "shapes/InnerCircle.h"
 #include "World.h"
+#include "player/Player.h"
 #include <ctime>
 #include "NumCpp.hpp"
 #include "backward.hpp"
@@ -35,7 +36,8 @@ int main() {
 
 
     World world = World({Box, c1, c2, c3}, "display", 1e-4);
-
+    Player player = Player(world);
+    player.draw(world);
     clock_t t1 = clock();
     world.loop(0.1);
     clock_t t2 = clock();

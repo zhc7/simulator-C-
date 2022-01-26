@@ -18,6 +18,8 @@ public:
     explicit InnerCircle(double radius, double k=10000);
 
     nc::NdArray<double> collapse(nc::NdArray<double> place, Entity entity, double r) override;
+
+    void draw(SkCanvas *canvas, nc::NdArray<double> place);
 };
 
 

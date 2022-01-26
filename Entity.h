@@ -9,6 +9,7 @@
 #include "Vector.h"
 #include "NumCpp.hpp"
 #include "constants.h"
+#include "include/core/SkCanvas.h"
 #include <vector>
 #include <map>
 
@@ -35,6 +36,8 @@ public:
     nc::NdArray<double> collapse(const Entity& entity);
 
     void calc_a();
+
+    void draw(SkCanvas *canvas);
 };
 
 

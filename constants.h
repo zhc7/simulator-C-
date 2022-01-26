@@ -15,4 +15,6 @@ const double pi = 3.14159;
 
 const int dimension = 2;
 
+const double display_ratio = 10;
+
 #endif //SIMULATOR_CONSTANTS_H
