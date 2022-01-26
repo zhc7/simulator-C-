@@ -20,7 +20,7 @@ backward::SignalHandling sh;
 using namespace std;
 
 
-int main() {
+int main1() {
     InnerCircle s0 = InnerCircle(10);
     Shape *ps0 = &s0;
     Entity Box = Entity(ps0, 1.0, 0.0, nc::NdArray<double>({0, 0}), nc::NdArray<double>({0, 0}), nc::NdArray<double>({0, 0}), true);
